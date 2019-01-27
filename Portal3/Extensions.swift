@@ -10,26 +10,26 @@ import Foundation
 import SceneKit
 import ARKit
 
-var width : CGFloat = 0.03
-var height : CGFloat = 1
-var length : CGFloat = 1
+var width : CGFloat = 0.01
+var height : CGFloat = 2
+var length : CGFloat = 2
 
 var doorLength : CGFloat = 0.3
 
-func createBox(isDoor : Bool) -> SCNNode {
+func createBox(isFloor : Bool) -> SCNNode {
     let node = SCNNode()
     
     //Add First Box
-    let firstBox = SCNBox(width: width, height: height, length: isDoor ? doorLength : length, chamferRadius: 0)
-    firstBox.firstMaterial?.diffuse.contents = UIColor.white
+    let firstBox = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
+    firstBox.firstMaterial?.diffuse.contents = isFloor ? UIImage.init(named: "grass") : UIImage.init(named: "bricks")
     let firstBoxNode = SCNNode(geometry: firstBox)
     firstBoxNode.renderingOrder = 200
     
     node.addChildNode(firstBoxNode)
     
     //Add Masked Box
-    let maskedBox = SCNBox(width: width, height: height, length: isDoor ? doorLength : length, chamferRadius: 0)
-    maskedBox.firstMaterial?.diffuse.contents = UIColor.white
+    let maskedBox = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
+    maskedBox.firstMaterial?.diffuse.contents = isFloor ? UIImage.init(named: "grass") : UIImage.init(named: "bricks")
     maskedBox.firstMaterial?.transparency = 0.000000001
     
     let maskedBoxNode = SCNNode(geometry: maskedBox)
@@ -49,10 +49,3 @@ extension FloatingPoint {
         return self * 180 / .pi
     }
 }
-
-
-
-
-
-
-
