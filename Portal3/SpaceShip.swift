@@ -12,30 +12,24 @@ class SpaceShip: SCNNode {
     
     func loadModal() {
         
-//        let value = Int.random(in: 0...4)
-//        var path = ""
-//
-//        switch value {
-//        case 0:
-//            path = "art.scnassets/ship.scn"
-//            break
-//        case 1:
-//            path = "art.scnassets/candle/candle.scn"
-//            break
-//        case 2:
-//            path = "art.scnassets/chair/chair.scn"
-//            break
-//        case 3:
-//            path = "art.scnassets/lamp/lamp.scn"
-//            break
-//        case 4:
-//            path = "art.scnassets/cup/cup.scn"
-//            break
-//        default:
-//            break
-//        }
+        let value = Int.random(in: 0...2)
+        var path = ""
         
-        guard let virtualOjectScene = SCNScene(named: "art.scnassets/ship.scn") else {return}
+        switch value {
+        case 0:
+            path = "art.scnassets/ship.scn"
+            break
+        case 1:
+            path = "art.scnassets/table.dae"
+            break
+        case 2:
+            path = "art.scnassets/chest.dae"
+            break
+        default:
+            break
+        }
+        
+        guard let virtualOjectScene = SCNScene(named: path) else {return}
         
         let wrapperNode = SCNNode()
         
@@ -44,7 +38,5 @@ class SpaceShip: SCNNode {
         }
         
         self.addChildNode(wrapperNode)
-        
     }
-    
 }

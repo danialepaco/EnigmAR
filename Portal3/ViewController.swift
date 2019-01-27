@@ -35,7 +35,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
 
     var player: AVAudioPlayer?
-    var counter: Timer?
     var maxTimer: Timer?
     var currentTime = ""
     var maxTime = 30  {
@@ -63,12 +62,41 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         setUpNodes()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
+    
     func gameOver() {
         
         if heartCounter <= 0 {
-            navigationController?.dismiss(animated: true, completion: nil)
+            self.playSound(isBad: true)
+            let alert = UIAlertController(title: "Alerta", message: "Haz perdido todas tus vidas 💔", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.navigationController?.dismiss(animated: true, completion: {
+                    self.stopPlayer()
+                })
+            }))
+            self.present(alert, animated: true)
         } else if starCounter >= 3 {
-            navigationController?.dismiss(animated: true, completion: nil)
+            self.playSound(isBad: false)
+            
+            let alert = UIAlertController(title: "Alerta", message: "Haz encontrado los tres cuartos secretos. Ganaste 🏆", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.navigationController?.dismiss(animated: true, completion: {
+                    self.stopPlayer()
+                })
+            }))
+            self.present(alert, animated: true)
         }
     }
     
@@ -77,12 +105,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         var path = ""
         
         if isBad {
-            path = "bad"
+            path = "pain"
         } else {
-            path = "good"
+            path = "win"
         }
         
-        guard let url = Bundle.main.url(forResource: path, withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: path, withExtension: "wav") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -129,6 +157,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             return
         }
         heartCounter -= 1
+        playSound(isBad: true)
         setUpNodes()
     }
     
@@ -159,22 +188,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        sceneView.session.pause()
+    func stopPlayer() {
+        maxTimer?.invalidate()
+        if let play = player {
+            print("stopped")
+            play.pause()
+            player = nil
+            print("player deallocated")
+        } else {
+            print("player was already deallocated")
+        }
     }
     
     private func setUpNodes() {
         maxTime = 30
-//        nodes.append(createNode(x: 0, y: 0, z: 0))
-        nodes.append(createNode(x: Int.random(in: 0...10), y: 0, z: Int.random(in: 0...10)))
+        nodes.append(createNode(x: 0, y: 0, z: 0))
+//        nodes.append(createNode(x: Int.random(in: 0...10), y: 0, z: Int.random(in: 0...10)))
         setupScene()
     }
     
