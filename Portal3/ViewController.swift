@@ -16,7 +16,7 @@ import AVFoundation
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var nodes = [Room]()
+    var node: Room!
     let heartStack = CosmosView()
     var starStack = CosmosView()
     var starCounter = 0 {
@@ -202,8 +202,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     private func setUpNodes() {
         maxTime = 30
-        nodes.append(createNode(x: 0, y: 0, z: 0))
-//        nodes.append(createNode(x: Int.random(in: 0...10), y: 0, z: Int.random(in: 0...10)))
         setupScene()
     }
     
@@ -274,9 +272,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             node.removeFromParentNode()
         }
         
-        for node in nodes {
-            self.sceneView.scene.rootNode.addChildNode(node)
-        }
+        node = createNode(x: Int.random(in: -2...2), y: 0, z: Int.random(in: -2...2))
+        self.sceneView.scene.rootNode.addChildNode(node)
     }
     
     func getUserVector(frame: simd_float4x4?) -> (SCNVector3) { // (direction, position)
@@ -294,23 +291,21 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let currentTransform = frame.camera.transform
         let value = getUserVector(frame: currentTransform)
         
-        for node in nodes {
-            if  value.x >= (node.position.x + Float((-length / 2) + width)) &&
-                value.x <= (node.position.x + Float((length / 2) - width)) &&
-                value.y >= (node.position.y + Float((-height / 2) + width)) &&
-                value.y <= (node.position.y + Float((height / 2) - width)) &&
-                value.z >= (node.position.z + Float((-length / 2) + width)) &&
-                value.z <= (node.position.z + Float((length / 2) + width)) {
-                
-                if !node.isShowingShip {
-                    node.isShowingShip = true
-                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                    node.showSpaceShip()
-                }
-            } else {
-                node.isShowingShip = false
-                node.hideSpaceShip()
+        if  value.x >= (node.position.x + Float((-length / 2) + width)) &&
+            value.x <= (node.position.x + Float((length / 2) - width)) &&
+            value.y >= (node.position.y + Float((-height / 2) + width)) &&
+            value.y <= (node.position.y + Float((height / 2) - width)) &&
+            value.z >= (node.position.z + Float((-length / 2) + width)) &&
+            value.z <= (node.position.z + Float((length / 2) + width)) {
+
+            if !node.isShowingShip {
+                node.isShowingShip = true
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                node.showSpaceShip()
             }
+        } else {
+            node.isShowingShip = false
+            node.hideSpaceShip()
         }
     }
     
