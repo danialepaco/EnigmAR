@@ -60,11 +60,24 @@
         <!--EnigmAR-->
         <scene sceneID="weL-DF-bKA">
             <objects>
-                <viewController id="jbx-Y3-tRb" sceneMemberID="viewController">
+                <viewController id="jbx-Y3-tRb" customClass="HomeVC" customModule="Portal3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZTQ-ks-3D6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uj-rz-77q" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="orbit"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.18428918720000001" green="0.1843278706" blue="0.18428674340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASO-9L-yOS">
                                 <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
                                 <subviews>
@@ -84,7 +97,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Qz3-qb-1v8" secondAttribute="trailing" id="1ud-sD-sa3"/>
                                     <constraint firstAttribute="width" constant="100" id="5AM-GZ-EQ6"/>
@@ -95,16 +108,32 @@
                                     <constraint firstItem="Qz3-qb-1v8" firstAttribute="top" secondItem="ASO-9L-yOS" secondAttribute="top" id="jj4-D4-DHX"/>
                                     <constraint firstItem="wcQ-a4-vzF" firstAttribute="centerX" secondItem="ASO-9L-yOS" secondAttribute="centerX" id="wGN-Wf-ANQ"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="orbit"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.18428918719291687" green="0.1843278706073761" blue="0.18428674340248108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ASO-9L-yOS" firstAttribute="centerX" secondItem="ZTQ-ks-3D6" secondAttribute="centerX" id="Sdx-0e-Bw2"/>
                             <constraint firstItem="ASO-9L-yOS" firstAttribute="centerY" secondItem="ZTQ-ks-3D6" secondAttribute="centerY" id="U0U-6Q-NMy"/>
+                            <constraint firstItem="0Uj-rz-77q" firstAttribute="height" secondItem="ASO-9L-yOS" secondAttribute="height" multiplier="2" id="bwF-kt-Ona"/>
+                            <constraint firstItem="0Uj-rz-77q" firstAttribute="centerX" secondItem="ZTQ-ks-3D6" secondAttribute="centerX" id="lRg-gY-FFd"/>
+                            <constraint firstItem="0Uj-rz-77q" firstAttribute="width" secondItem="ASO-9L-yOS" secondAttribute="width" multiplier="2" id="pD8-x7-kWJ"/>
+                            <constraint firstItem="0Uj-rz-77q" firstAttribute="centerY" secondItem="ZTQ-ks-3D6" secondAttribute="centerY" id="rda-wv-Z7V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="trB-qa-QRX"/>
                     </view>
                     <navigationItem key="navigationItem" title="EnigmAR" id="zzR-ZC-Gvz"/>
+                    <connections>
+                        <outlet property="indicator" destination="0Uj-rz-77q" id="I5d-II-lCf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdg-6s-nJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

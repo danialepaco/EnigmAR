@@ -21,6 +21,7 @@
 		2401D43021FC3EDB00037FF4 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401D42F21FC3EDB00037FF4 /* Room.swift */; };
 		24ED641421FD638A00F7293D /* pain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24ED641321FD638900F7293D /* pain.wav */; };
 		24ED641621FD639400F7293D /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24ED641521FD639400F7293D /* win.wav */; };
+		24ED641821FD85BE00F7293D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED641721FD85BE00F7293D /* HomeVC.swift */; };
 		6CEFBEC2EB2DFE108568AD26 /* Pods_Portal3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809ABD61C0A1EB3964011FE9 /* Pods_Portal3.framework */; };
 		DB729D56BE000BDACEDA5898 /* Pods_Portal3UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA82E8DAD9667A5746134F7 /* Pods_Portal3UITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		2401D42F21FC3EDB00037FF4 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		24ED641321FD638900F7293D /* pain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pain.wav; sourceTree = "<group>"; };
 		24ED641521FD639400F7293D /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		24ED641721FD85BE00F7293D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = "/Users/danialepaco/Desktop/ARKit-Portal/Portal3/HomeVC.swift"; sourceTree = "<absolute>"; };
 		2E7BA57C9CB208722E8B0DAC /* Pods_Portal3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Portal3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4A5C8D66395139E7CEC0F2 /* Pods-Portal3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portal3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Portal3Tests/Pods-Portal3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		70EC4A2A234E930E5F178168 /* Pods-Portal3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Portal3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Portal3UITests/Pods-Portal3UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				24ED641521FD639400F7293D /* win.wav */,
 				1DE08C512034D682006828F7 /* AppDelegate.swift */,
 				1DE08C552034D682006828F7 /* ViewController.swift */,
+				24ED641721FD85BE00F7293D /* HomeVC.swift */,
 				2401D42D21FC17F500037FF4 /* SpaceShip.swift */,
 				2401D42F21FC3EDB00037FF4 /* Room.swift */,
 				1DE08C812034D691006828F7 /* Extensions.swift */,
@@ -352,12 +355,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Portal3/Pods-Portal3-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -418,6 +423,7 @@
 				1DE08C562034D682006828F7 /* ViewController.swift in Sources */,
 				1DE08C822034D691006828F7 /* Extensions.swift in Sources */,
 				2401D42E21FC17F500037FF4 /* SpaceShip.swift in Sources */,
+				24ED641821FD85BE00F7293D /* HomeVC.swift in Sources */,
 				1DE08C522034D682006828F7 /* AppDelegate.swift in Sources */,
 				2401D43021FC3EDB00037FF4 /* Room.swift in Sources */,
 			);

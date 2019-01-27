@@ -1,16 +1,20 @@
 PODS:
   - Cosmos (17.0.0)
+  - NVActivityIndicatorView/AppExtension (4.4.0)
 
 DEPENDENCIES:
   - Cosmos (~> 17.0)
+  - NVActivityIndicatorView/AppExtension
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Cosmos
+    - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
+  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
 
-PODFILE CHECKSUM: 47451ca30f9f5adc09a33df5c859fdeebde21de7
+PODFILE CHECKSUM: 489e166416a4725cf09c2d6d48b2807664729c4b
 
 COCOAPODS: 1.5.3

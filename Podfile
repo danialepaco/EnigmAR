@@ -7,6 +7,7 @@ target 'Portal3' do
 
   # Pods for Portal3
   pod 'Cosmos', '~> 17.0'
+  pod 'NVActivityIndicatorView/AppExtension'
 
   target 'Portal3Tests' do
     inherit! :search_paths
